@@ -6,9 +6,13 @@ const addItem = () => {
     return;
   }
   // Display product;
+
   displayProducts(name);
+
   // save to local storage;
+
   addProductToCart(name);
+
   nameField.value = "";
 };
 
@@ -35,10 +39,18 @@ const addProductToCart = (name) => {
   //   cart.name = 1;
 
   /* instead we will write cart[parameter_name] , we will get the parameter from addItem() function. we can not set parameter(which we get from another source) using .property. to access the name parameter we had to write cart[name] = 1; */
-  cart[name] = true;
+  if (cart[name]) {
+    cart[name] = cart[name] + 1;
+  } else {
+    cart[name] = 1;
+  }
+
   // now we have to stringify the cart to convert to json file if we want it to store on local storage;
+
   const cartStringified = JSON.stringify(cart);
+
   // setting the key-value pair in local storage;
+
   localStorage.setItem("cart", cartStringified);
 
   console.log(cart);
