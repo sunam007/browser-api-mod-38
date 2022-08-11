@@ -2,6 +2,9 @@ console.log("js addded");
 const addItem = () => {
   const nameField = document.getElementById("product-name");
   const name = nameField.value;
+  if (!name) {
+    return;
+  }
   // Display product;
   displayProducts(name);
   // save to local storage;
@@ -40,3 +43,17 @@ const addProductToCart = (name) => {
 
   console.log(cart);
 };
+
+// display cart items from local storage
+
+const displayProductFromLocalStorage = () => {
+  const cart = getCart();
+  // the value of cart will be object; so we will use for in to loop the property;
+  for (const product in cart) {
+    console.log(product);
+    displayProducts(product);
+  }
+};
+
+// we have to call the function
+displayProductFromLocalStorage();
