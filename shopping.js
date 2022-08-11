@@ -57,3 +57,8 @@ const displayProductFromLocalStorage = () => {
 
 // we have to call the function
 displayProductFromLocalStorage();
+
+const placeOrder = () => {
+  document.getElementById("products").textContent = "";
+  localStorage.removeItem("cart");
+};
